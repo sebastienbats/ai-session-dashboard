@@ -11,7 +11,7 @@ Un tableau de bord complet qui affiche le modèle, la version et le fournisseur 
 ### 🔍 Affichage des informations IA
 - Modèle utilisé (ex: Llama 3.3 70B, GPT-4o-mini)
 - Version du modèle
-- Fournisseur actif (Groq, Cerebras, GitHub, Algion, Ollama)
+- Fournisseur actif (Groq, Cerebras, Algion, Ollama)
 - Liste des fournisseurs disponibles pour le fallback
 
 ### 🎲 Gestion des tokens
@@ -43,7 +43,6 @@ Un tableau de bord complet qui affiche le modèle, la version et le fournisseur 
 |-------------|--------|---------------|---------------------|---------|
 | **Groq Cloud** | 🆓 Gratuit | `GROQ_API_KEY` | Llama 3.3 70B, Llama 3.1 8B, Mixtral 8x7B, Gemma2 9B | ~30 RPM, ~1000 req/jour |
 | **Cerebras** | 🆓 Gratuit | `CEREBRAS_API_KEY` | Llama 3.1 8B, GPT-OSS 120B | ~2100 tokens/s |
-| **GitHub Models** | 🆓 Gratuit | `GITHUB_TOKEN` | Llama 3.1, Mistral Large 2, GPT-4o-mini | Free tier inclus |
 | **Algion** | 🆓 Gratuit | `ALGION_API_KEY` | GPT-4o, Claude Sonnet, Gemini Pro | Gratuit (via Telegram) |
 | **Ollama** | 🏠 Local | Aucune | Llama 3.2, Gemma 3, Mistral, Phi-3 | Illimité (hardware local) |
 
@@ -53,7 +52,6 @@ Un tableau de bord complet qui affiche le modèle, la version et le fournisseur 
 - **Node.js** + **Express** - Serveur API REST
 - **OpenAI SDK** - Compatibilité multi-fournisseurs
 - **Cerebras SDK** - Accès aux modèles Cerebras
-- **GitHub Models** - Modèles hébergés par GitHub
 - **Ollama** - Inférence locale
 
 ### Frontend
@@ -92,7 +90,6 @@ PORT=5000
 # Ajoutez au moins une clé API parmi celles-ci :
 GROQ_API_KEY=votre_cle_groq_ici
 CEREBRAS_API_KEY=votre_cle_cerebras_ici
-GITHUB_TOKEN=votre_token_github_ici
 ALGION_API_KEY=votre_cle_algion_ici
 
 # Configuration Ollama (optionnel)
@@ -150,11 +147,6 @@ ollama serve
 3. Récupérez votre clé API
 4. Copiez-la dans CEREBRAS_API_KEY
 
-### GitHub Models
-1. Allez dans GitHub Settings > Developer settings > Personal access tokens
-2. Générez un token avec scope read:models
-3. Copiez le token dans GITHUB_TOKEN
-
 ### Algion
 1. Ouvrez Telegram et recherchez @AlgionBot
 2. Envoyez /start puis /apikey
@@ -196,7 +188,6 @@ ai-session-dashboard/
 │       ├── providers/         # Modules d'intégration API
 │       │   ├── groq.js       # Intégration Groq Cloud
 │       │   ├── cerebras.js   # Intégration Cerebras
-│       │   ├── github.js     # Intégration GitHub Models
 │       │   ├── algion.js     # Intégration Algion
 │       │   └── ollama.js     # Intégration Ollama local
 │       └── fallback.js       # Logique de basculement
@@ -218,7 +209,6 @@ ai-session-dashboard/
 const PROVIDER_ORDER = [
   { name: 'Groq', ... },      // Premier
   { name: 'Cerebras', ... },  // Deuxième
-  { name: 'GitHub', ... },    // Troisième
   // Modifiez l'ordre selon vos préférences
 ];
 ```
@@ -296,7 +286,6 @@ Distribué sous licence MIT. Voir LICENSE pour plus d'informations.
 ## 🙏 Remerciements
 - Groq pour leur API ultra-rapide
 - Cerebras pour l'inférence à haut débit
-- GitHub pour les modèles gratuits
 - Algion pour l'API gratuite
 - Ollama pour l'inférence locale
 - Tous les contributeurs open source
