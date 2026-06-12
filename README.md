@@ -74,7 +74,7 @@ Un tableau de bord complet qui affiche le modèle, la version et le fournisseur 
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/votre-utilisateur/ai-session-dashboard.git
+git clone https://github.com/sebastienbats/ai-session-dashboard.git
 cd ai-session-dashboard
 ```
 
@@ -176,10 +176,10 @@ L'application tente automatiquement les fournisseurs dans cet ordre :
 ```text
 Groq Cloud → Cerebras → GitHub Models → Algion → Ollama (local)
 ```
-✅ Si un fournisseur est indisponible (clé manquante, erreur API, limite atteinte), le suivant est essayé
-✅ Le premier fournisseur qui répond avec succès est utilisé pour la requête
-✅ Les informations du fournisseur actif sont affichées en temps réel
-✅ Les tokens sont comptabilisés quel que soit le fournisseur utilisé
+- ✅ Si un fournisseur est indisponible (clé manquante, erreur API, limite atteinte), le suivant est essayé
+- ✅ Le premier fournisseur qui répond avec succès est utilisé pour la requête
+- ✅ Les informations du fournisseur actif sont affichées en temps réel
+- ✅ Les tokens sont comptabilisés quel que soit le fournisseur utilisé
 
 ### Commandes disponibles
 |Action|Description|
