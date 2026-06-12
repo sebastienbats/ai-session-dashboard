@@ -2,7 +2,6 @@
 const PROVIDER_ORDER = [
   { name: 'Groq', provider: require('./providers/groq'), call: 'callGroq', config: { model: 'llama-3.3-70b-versatile' } },
   { name: 'Cerebras', provider: require('./providers/cerebras'), call: 'callCerebras', config: { model: 'llama3.1-8b' } },
-  { name: 'GitHub', provider: require('./providers/github'), call: 'callGitHub', config: { model: 'meta-llama-3.1-8b-instruct' } },
   { name: 'Algion', provider: require('./providers/algion'), call: 'callAlgion', config: { model: 'gpt-4o-mini' } },
   { name: 'Ollama', provider: require('./providers/ollama'), call: 'callOllama', config: { model: process.env.OLLAMA_MODEL || 'llama3.2' } },
 ];
@@ -12,13 +11,8 @@ async function callWithFallback(messages, options = {}) {
   
   for (const provider of PROVIDER_ORDER) {
     // Vérifier si le fournisseur a une clé API configurée (sauf Ollama)
-    if (provider.name !== 'Ollama' && provider.name !== 'GitHub' && 
-        !process.env[`${provider.name.toUpperCase()}_API_KEY`]) {
+    if (provider.name !== 'Ollama' && !process.env[`${provider.name.toUpperCase()}_API_KEY`]) {
       console.log(`⚠️ ${provider.name} : clé API manquante, fournisseur ignoré`);
-      continue;
-    }
-    if (provider.name === 'GitHub' && !process.env.GITHUB_TOKEN) {
-      console.log(`⚠️ GitHub Models : GITHUB_TOKEN manquant, fournisseur ignoré`);
       continue;
     }
     
@@ -54,7 +48,6 @@ async function callWithFallback(messages, options = {}) {
 function getActiveProviders() {
   return PROVIDER_ORDER.filter(provider => {
     if (provider.name === 'Ollama') return true;
-    if (provider.name === 'GitHub') return !!process.env.GITHUB_TOKEN;
     return !!process.env[`${provider.name.toUpperCase()}_API_KEY`];
   }).map(p => p.name);
 }
