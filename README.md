@@ -41,7 +41,7 @@ Un tableau de bord complet qui affiche le modèle, la version et le fournisseur 
 
 | Fournisseur | Statut | Configuration | Modèles disponibles | Limites |
 |-------------|--------|---------------|---------------------|---------|
-| **Groq Cloud** | 🆓 Gratuit | `GROQ_API_KEY` | Llama 3.3 70B, Llama 3.1 8B, Mixtral 8x7B, Gemma2 9B | ~30 RPM, ~1000 req/jour |
+| **Groq Cloud** | 🆓 Gratuit | `GROQ_API_KEY` | llama-3.3-70b-versatile, Llama 3.1 8B, Mixtral 8x7B, Gemma2 9B | ~30 RPM, ~1000 req/jour |
 | **Cerebras** | 🆓 Gratuit | `CEREBRAS_API_KEY` | Llama 3.1 8B, GPT-OSS 120B | ~2100 tokens/s |
 | **Algion** | 🆓 Gratuit | `ALGION_API_KEY` | GPT-4o, Claude Sonnet, Gemini Pro | Gratuit (via Telegram) |
 | **Ollama** | 🏠 Local | Aucune | Llama 3.2, Gemma 3, Mistral, Phi-3 | Illimité (hardware local) |
